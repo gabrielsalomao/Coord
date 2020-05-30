@@ -15,7 +15,7 @@
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Coord</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
@@ -25,15 +25,19 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="Privacy">Privacy</a>
+                               asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Coordenador"
-                                asp-action="Index">Coordenadores</a>
+                               asp-action="Index">Coordenadores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Coordenado"
-                                asp-action="Index">Coordenados</a>
+                               asp-action="Index">Coordenados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                               asp-action="Mapa">Mapa</a>
                         </li>
                     </ul>
                 </div>
@@ -55,6 +59,9 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+    <script src="~/js/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGDXOOvYeMNR44II5ttoojbDRtdD8SxoI&callback=initMap"
+            async defer></script>
 </body>
 
 </html>
