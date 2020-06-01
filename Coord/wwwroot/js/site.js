@@ -1,4 +1,8 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿$('.telefone').mask('(00) 0000-0000');
+$('.celular').mask('(00) 00000-0000');
+$('.cep').mask('00000000');
+$('.placa').mask('SSS SSSS', {
+    'translation': {
+        S: { pattern: /[A-Za-z0-9]/ },
+    }
+});

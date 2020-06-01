@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Westwind.AspNetCore.LiveReload;
 
 namespace Coord
 {
@@ -23,6 +24,8 @@ namespace Coord
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddMvc().AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
 
             services.AddEntityFrameworkSqlite().AddDbContext<CoordContext>();
@@ -39,6 +42,7 @@ namespace Coord
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
             app.UseStaticFiles();
 
             app.UseRouting();

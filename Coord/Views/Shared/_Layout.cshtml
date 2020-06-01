@@ -7,11 +7,12 @@
     <title>@ViewData["Title"] - Coord</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Coord</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
@@ -21,23 +22,15 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                               asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Coordenador"
+                            <a class="nav-link text-light" asp-area="" asp-controller="Coordenador"
                                asp-action="Index">Coordenadores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Coordenado"
+                            <a class="nav-link text-light" asp-area="" asp-controller="Coordenado"
                                asp-action="Index">Coordenados</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                               asp-action="Mapa">Mapa</a>
                         </li>
                     </ul>
                 </div>
@@ -50,16 +43,18 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - Coord - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="page-footer font-small blue">
+        <div class="footer-copyright text-center py-3">
+            © 2020 
         </div>
     </footer>
+    <!-- Footer -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
-    <script src="~/js/map.js"></script>
+    <script src="~/js/map.js?v=3"></script>
+    <script src="~/js/jquery.mask.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGDXOOvYeMNR44II5ttoojbDRtdD8SxoI&callback=initMap"
             async defer></script>
 </body>

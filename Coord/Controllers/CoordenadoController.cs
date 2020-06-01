@@ -56,7 +56,7 @@ namespace Coord.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CoordenadoId,Nome,CoordenadorId")] Coordenado coordenado)
+        public async Task<IActionResult> Create([Bind("CoordenadoId,Nome,Veiculo,RedeSocial,Placa,Celular,Telefone,Logradouro,Bairro,Cep,Numero,CoordenadorId,CreatedDate,UpdatedDate")] Coordenado coordenado)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace Coord.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CoordenadoId,Nome,CoordenadorId")] Coordenado coordenado)
+        public async Task<IActionResult> Edit(int id, [Bind("CoordenadoId,Nome,Veiculo,RedeSocial,Placa,Celular,Telefone,Logradouro,Bairro,Cep,Numero,CoordenadorId,CreatedDate,UpdatedDate")] Coordenado coordenado)
         {
             if (id != coordenado.CoordenadoId)
             {
@@ -149,6 +149,19 @@ namespace Coord.Controllers
             _context.Coordenado.Remove(coordenado);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public JsonResult ObterEnderecosDosCoordenados()
+        {
+            object data;
+
+            data = from x in _context.Coordenado.ToList()
+                   select new
+                   {
+                       endereco = x.ConstruirEndereco(x)
+                   };
+
+            return Json(data);
         }
 
         private bool CoordenadoExists(int id)
