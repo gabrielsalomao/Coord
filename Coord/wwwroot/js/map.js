@@ -96,7 +96,7 @@ function initMap() {
             var regiaoSegredoPoligonoLogico = new google.maps.Polygon({ paths: regiaoSegredoCoords });
 
             enderecos.forEach(item => {
-
+                console.log(item.endereco)
                 geocoder.geocode({ 'address': item.endereco }, function (results, status) {
                     if (status === 'OK') {
                         var marker = new google.maps.Marker({
@@ -104,27 +104,31 @@ function initMap() {
                             position: results[0].geometry.location
                         });
 
-                        //TODO quando o endereco nao é exato a api não retorna a latLong.verificar isso
-                        latLong = results[0].access_points[0].location;
+                        //long
+                        var longitude = results[0].geometry.viewport.Ua.i;
 
-                        var curPositionB = new google.maps.LatLng(latLong.latitude, latLong.longitude);
+                        //lat
+                        var latitude = results[0].geometry.viewport.Ya.i;
 
-                        var ehDaRegiaoSegredo = google.maps.geometry.poly.containsLocation(curPositionB, regiaoSegredoPoligonoLogico);
+
+                        //TO - DO quando o endereco nao é exato a api não retorna a latLong.verificar isso
+                        //latLong = results[0].access_points[0].location;
+
+                        console.log(results[0]);
+
+                        var latLongObject = new google.maps.LatLng(latitude, longitude);
+
+                        var ehDaRegiaoSegredo = google.maps.geometry.poly.containsLocation(latLongObject, regiaoSegredoPoligonoLogico);
 
                         if (ehDaRegiaoSegredo) {
                             contadorRegiaoSegredo += 1;
                             conteudoDoCardDasRegioes[0].innerHTML = `Segredo : ${contadorRegiaoSegredo}`;
                         }
 
-                        console.log(conteudoDoCardDasRegioes);
-
-                        //console.log(resultColor);
                     } else {
                         alert('Geocode was not successful for the following reason: ' + status);
                     }
                 });
-
-                console.log(item.endereco);
             });
         } else {
             alert('Nenhum endereço encontrado');
