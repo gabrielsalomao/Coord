@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Coord.Migrations
 {
@@ -12,7 +13,14 @@ namespace Coord.Migrations
                 {
                     CoordenadorId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Nome = table.Column<string>(nullable: true)
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    UpdatedDate = table.Column<DateTime>(nullable: false),
+                    Nome = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Veiculo = table.Column<bool>(nullable: false),
+                    RedeSocial = table.Column<string>(type: "varchar(150)", nullable: true),
+                    Placa = table.Column<string>(type: "varchar(10)", nullable: true),
+                    Celular = table.Column<string>(type: "varchar(20)", nullable: true),
+                    Telefone = table.Column<string>(type: "varchar(20)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -25,7 +33,18 @@ namespace Coord.Migrations
                 {
                     CoordenadoId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Nome = table.Column<string>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    UpdatedDate = table.Column<DateTime>(nullable: false),
+                    Nome = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Veiculo = table.Column<bool>(nullable: false),
+                    RedeSocial = table.Column<string>(type: "varchar(150)", nullable: true),
+                    Placa = table.Column<string>(type: "varchar(10)", nullable: true),
+                    Celular = table.Column<string>(type: "varchar(20)", nullable: true),
+                    Telefone = table.Column<string>(type: "varchar(20)", nullable: true),
+                    Logradouro = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Bairro = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Cep = table.Column<string>(type: "varchar(10)", nullable: false),
+                    Numero = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
                     CoordenadorId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

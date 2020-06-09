@@ -1,19 +1,31 @@
 ﻿@model IEnumerable<Coord.Models.Coordenado>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Coordenados";
 }
 
-<h1>Index</h1>
+    <h1>Coordenados</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Novo</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Veiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Placa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Celular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Coordenador)
@@ -28,12 +40,38 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Veiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Placa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Coordenador.Nome)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CoordenadoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CoordenadoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CoordenadoId">Delete</a>
+                <div class="btn-group  btn-group-sm" role="group" aria-label="Basic example">
+                    <a asp-action="Edit" asp-route-id="@item.CoordenadoId" title="Editar" class="btn btn-info text-white" style=" cursor: pointer; ">
+                        <span class="material-icons">
+                            create
+                        </span>
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.CoordenadoId" title="Detalhes" class="btn btn-primary text-white" style=" cursor: pointer;">
+                        <span class="material-icons">
+                            visibility
+                        </span>
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.CoordenadoId" title="Deletar" class="btn btn-danger text-white" style=" cursor: pointer; ">
+                        <span class="material-icons">
+                            delete
+                        </span>
+                    </a>
+                </div>
             </td>
         </tr>
 }

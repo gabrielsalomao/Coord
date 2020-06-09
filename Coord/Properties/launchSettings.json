@@ -1,9 +1,17 @@
 ﻿{
+    //"LiveReload": {
+    //  "LiveReloadEnabled": true,
+    //  "ClientFileExtensions": ".cshtml,.css,.js,.htm,.html,.ts,.razor,.custom",
+    //  "ServerRefreshTimeout": 3000,
+    //  "WebSocketUrl": "/__livereload",
+    //  "WebSocketHost": "ws://localhost:5001",
+    //  "FolderToMonitor": "~/"
+    //},
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:49874",
+      "applicationUrl": "http://localhost:3001",
       "sslPort": 0
     }
   },

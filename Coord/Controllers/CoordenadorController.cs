@@ -53,7 +53,7 @@ namespace Coord.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CoordenadorId,Nome")] Coordenador coordenador)
+        public async Task<IActionResult> Create([Bind("CoordenadorId,Nome,Veiculo,RedeSocial,Placa,Celular,Telefone,CreatedDate,UpdatedDate")] Coordenador coordenador)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Coord.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CoordenadorId,Nome")] Coordenador coordenador)
+        public async Task<IActionResult> Edit(int id, [Bind("CoordenadorId,Nome,Veiculo,RedeSocial,Placa,Celular,Telefone,CreatedDate,UpdatedDate")] Coordenador coordenador)
         {
             if (id != coordenador.CoordenadorId)
             {

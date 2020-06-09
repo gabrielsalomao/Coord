@@ -4,32 +4,77 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Coordenadores</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Novo</a>
 </p>
-<table class="table">
+<table class="table table-striped table-hover table-sm">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Veiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RedeSocial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Placa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Celular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CoordenadorId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CoordenadorId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CoordenadorId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Veiculo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RedeSocial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Placa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Celular)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    <div class="btn-group  btn-group-sm" role="group" aria-label="Basic example">
+                        <a asp-action="Edit" asp-route-id="@item.CoordenadorId" title="Editar" class="btn btn-info text-white" style=" cursor: pointer; ">
+                            <span class="material-icons">
+                                create
+                            </span>
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.CoordenadorId" title="Detalhes" class="btn btn-primary text-white" style=" cursor: pointer;">
+                            <span class="material-icons">
+                                visibility
+                            </span>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.CoordenadorId" title="Deletar" class="btn btn-danger text-white" style=" cursor: pointer; ">
+                            <span class="material-icons">
+                                delete
+                            </span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
