@@ -13,6 +13,9 @@ namespace Coord.Models
         [Required(ErrorMessage = "Campo obrigatório")]
         public string Nome { get; set; }
 
+        [Column(TypeName = "varchar(200)")]
+        public string ZonaEleitoral { get; set; }
+
         public bool Veiculo { get; set; }
 
         [Column(TypeName = "varchar(150)")]

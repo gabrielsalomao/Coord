@@ -15,6 +15,8 @@ namespace Coord.Models
 
         public bool Veiculo { get; set; }
 
+        [Column(TypeName = "varchar(200)")]
+        public string ZonaEleitoral { get; set; }
 
         [Column(TypeName = "varchar(150)")]
         [DisplayName("Redes Sociais")]

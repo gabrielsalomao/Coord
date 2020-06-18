@@ -214,17 +214,27 @@ function initMap() {
             var regiaoCentroPoligonoVisual = new google.maps.Data.Polygon([regiaoCentroCoords]);
             map.data.add({ geometry: regiaoCentroPoligonoVisual })
 
+            var regiaoCentroPoligonoLogico = new google.maps.Polygon({ paths: regiaoCentroCoords });
+
             var regiaoProsaPoligonoVisual = new google.maps.Data.Polygon([regiaoProsaCoords]);
             map.data.add({ geometry: regiaoProsaPoligonoVisual })
+
+            var regiaoProsaPoligonoLogico = new google.maps.Polygon({ paths: regiaoProsaCoords });
 
             var regiaoBandeiraPoligonoVisual = new google.maps.Data.Polygon([regiaoBandeiraCoords]);
             map.data.add({ geometry: regiaoBandeiraPoligonoVisual })
 
+            var regiaoBandeiraPoligonoLogico = new google.maps.Polygon({ paths: regiaoBandeiraCoords });
+
             var regiaoAnhanduizinhoPoligonoVisual = new google.maps.Data.Polygon([regiaoAnhanduizinhoCoords]);
             map.data.add({ geometry: regiaoAnhanduizinhoPoligonoVisual })
 
+            var regiaoAnhanduizinhoPoligonoLogico = new google.maps.Polygon({ paths: regiaoAnhanduizinhoCoords });
+
             var regiaoImbirussuPoligonoVisual = new google.maps.Data.Polygon([regiaoImbirussuCoords]);
             map.data.add({ geometry: regiaoImbirussuPoligonoVisual })
+
+            var regiaoImbirussuPoligonoLogico = new google.maps.Polygon({ paths: regiaoImbirussuCoords });
 
             enderecos.forEach(item => {
                 console.log(item.endereco)
