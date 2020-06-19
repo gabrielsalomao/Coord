@@ -14,13 +14,13 @@ function initMap() {
     $.get('/Coordenado/ObterEnderecosDosCoordenados', (data) => {
         if (data) {
             enderecos = data;
-            var geocoder;
+
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 11,
                 center: { lat: -20.4888209, lng: -54.6200872 },
             });
 
-            geocoder = new google.maps.Geocoder();
+            var geocoder = new google.maps.Geocoder();
 
             map.data.setStyle(function (feature) {
                 var color = 'gray';
@@ -132,7 +132,6 @@ function initMap() {
 
                 var count = 0;
                 var timer;
-                var timerOn = false;
 
                 timedCount();
 
@@ -194,19 +193,6 @@ function initMap() {
                         timedCount()
                     }, 100);
                 }
-
-                function doTimer() {
-                    if (!timerOn) {
-                        timerOn = true;
-                        timedCount();
-                    }
-                }
-
-                function stopCount() {
-                    clearTimeout(timer);
-                    timerOn = false;
-                }
-
             });
 
         } else {
@@ -228,8 +214,11 @@ function montarTabelaDosCoordenados(listaCoordenados) {
 
     for (var i of listaCoordenados) {
         bodyElement += ` <li class="list-group-item d-flex justify-content-between align-items-center">
-            <strong>${i.nome}</strong> - 
-         <span class="badge badge-primary badge-pill">14</span>
+            <strong>${i.nome}</strong> ${i.telefone}
+         <span class="badge badge-primary badge-pill">14</span> <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
         </li>`
     }
 
