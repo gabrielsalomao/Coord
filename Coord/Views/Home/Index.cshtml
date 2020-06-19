@@ -15,7 +15,29 @@
         }
 </style>
 <div class="row">
-    <div class="col-md-3 mb-4">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group" id="listaCorpo">
+                        
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-md-3 mb-4">
         <div class="card">
             <div class="card-header" id="CardDasRegioes">
                 <h4>Coordenados</h4>
@@ -58,8 +80,8 @@
                 </li>
             </ul>
         </div>
-    </div>
-    <div class="col-md-9 mb-4">
+    </div> -->
+    <div class="col-md-12 mb-4">
         <div class="card card-cascade narrower">
             <div class="card-body card-body-cascade text-center">
                 <div id="map" class="z-depth-1-half map-container-5" style="height: 300px">

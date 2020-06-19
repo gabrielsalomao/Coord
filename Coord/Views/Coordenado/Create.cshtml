@@ -84,13 +84,18 @@
 
             var cepValue = $('#Cep').val();
 
-            console.log(cepValue);
-            $.get(`http://cep.la/${cepValue}`, (data) => {
-                if (data) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", `http://cep.la/${cepValue}`, true);
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.onreadystatechange = function () {
+                if ((xhr.readyState == 0 || xhr.readyState == 4) && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+
                     $('#Logradouro').val(data.logradouro);
                     $('#Bairro').val(data.bairro);
                 }
-            });
-        })
+            };
+            xhr.send(null);
+        });
     </script>
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -85,9 +83,6 @@ namespace Coord.Controllers
             return View(coordenado);
         }
 
-        // POST: Coordenado/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CoordenadoId,Nome,Veiculo,RedeSocial,Placa,Celular,Telefone,Logradouro,Bairro,Cep,Numero,CoordenadorId,CreatedDate,UpdatedDate")] Coordenado coordenado)
@@ -158,8 +153,25 @@ namespace Coord.Controllers
             data = from x in _context.Coordenado.ToList()
                    select new
                    {
+                       codigo = x.CoordenadoId,
                        endereco = x.ConstruirEndereco(x)
                    };
+
+            return Json(data);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> ObterCoordenadosPorCodigo(string codigos)
+        {
+            int[] arrayCodigos = codigos.Split(',').Select(x => int.Parse(x)).ToArray();
+
+            var data = await (from x in _context.Coordenado.Where(x => arrayCodigos.Contains(x.CoordenadoId))
+                              select new
+                              {
+                                  Codigo = x.CoordenadoId,
+                                  x.Nome,
+                                  x.Telefone,
+                              }).ToListAsync();
 
             return Json(data);
         }
