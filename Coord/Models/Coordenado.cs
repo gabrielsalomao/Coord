@@ -52,6 +52,9 @@ namespace Coord.Models
         [DisplayName("Coordenador")]
         public int CoordenadorId { get; set; }
 
+        [Column(TypeName = "varchar(100)")]
+        [DisplayName("E-Mail")]
+        public string Email { get; set; }
         public Coordenador Coordenador { get; set; }
 
         public string ConstruirEndereco(Coordenado coordenado)

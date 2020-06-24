@@ -204,6 +204,7 @@ function initMap() {
 function obterCoodenadosPorRegiao(arrayComCodigos) {
     $.post('/Coordenado/ObterCoordenadosPorCodigo',
         data = { codigos: arrayComCodigos.join(',') }, (data) => {
+            console.log(data);
             montarTabelaDosCoordenados(data);
         });
 }
@@ -212,15 +213,35 @@ function montarTabelaDosCoordenados(listaCoordenados) {
 
     var bodyElement = "";
 
-    for (var i of listaCoordenados) {
-        bodyElement += ` <li class="list-group-item d-flex justify-content-between align-items-center">
+    if (!listaCoordenados.success) {
+        listaCorpoElement.innerHTML = listaCoordenados.body;
+        return;
+    } else {
+        for (var i of listaCoordenados.body) {
+            bodyElement += `<li class="list-group-item d-flex justify-content-between align-items-center">
             <strong>${i.nome}</strong> ${i.telefone}
-         <span class="badge badge-primary badge-pill">14</span> <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <div>
+                  <div class="btn-group  btn-group-sm" role="group" aria-label="Basic example">
+                    <a href="coordenado/edit/${i.codigo}" title="Editar" class="btn btn-info text-white" style=" cursor: pointer; ">
+                        <span class="material-icons">
+                            create
+                        </span>
+                    </a>
+                    <a href="coordenado/details/${i.codigo}" title="Detalhes" class="btn btn-primary text-white" style=" cursor: pointer;">
+                        <span class="material-icons">
+                            visibility
+                        </span>
+                    </a>
+                    <a href="coordenado/delete/${i.codigo}" title="Deletar" class="btn btn-danger text-white" style=" cursor: pointer; ">
+                        <span class="material-icons">
+                            delete
+                        </span>
+                    </a>
+                </div>           
+            </div>
         </li>`
-    }
+        }
 
-    listaCorpoElement.innerHTML = bodyElement;
+        listaCorpoElement.innerHTML = bodyElement;
+    }
 };

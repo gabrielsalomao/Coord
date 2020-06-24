@@ -30,5 +30,9 @@ namespace Coord.Models
 
         [Column(TypeName = "varchar(20)")]
         public string Telefone { get; set; }
+
+        [Column(TypeName = "varchar(100)")]
+        [DisplayName("E-Mail")]
+        public string Email { get; set; }
     }
 }

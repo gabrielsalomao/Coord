@@ -28,7 +28,8 @@ namespace Coord
             services.AddMvc().AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
 
-            services.AddEntityFrameworkSqlite().AddDbContext<CoordContext>();
+            services.AddDbContext<CoordContext>(options =>
+                               options.UseSqlServer(Configuration.GetConnectionString("CoordContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,10 +12,10 @@ public class CoordContext : DbContext
     {
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite("Filename=CoordContext.db");
-    }
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    optionsBuilder.UseSqlite("Filename=CoordContext.db");
+    //}
 
     public DbSet<Coordenador> Coordenador { get; set; }
 
