@@ -1,12 +1,4 @@
-﻿{
-    //"LiveReload": {
-    //  "LiveReloadEnabled": true,
-    //  "ClientFileExtensions": ".cshtml,.css,.js,.htm,.html,.ts,.razor,.custom",
-    //  "ServerRefreshTimeout": 3000,
-    //  "WebSocketUrl": "/__livereload",
-    //  "WebSocketHost": "ws://localhost:5001",
-    //  "FolderToMonitor": "~/"
-    //},
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -26,10 +18,16 @@
     "Coord": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:5000"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true
     }
   }
 }

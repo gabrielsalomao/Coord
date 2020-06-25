@@ -163,6 +163,18 @@ namespace Coord.Controllers
         [HttpPost]
         public async Task<JsonResult> ObterCoordenadosPorCodigo(string codigos)
         {
+            object response = new object();
+
+            if (string.IsNullOrEmpty(codigos))
+            {
+
+
+                return Json(response = new
+                {
+                    success = false
+                });
+            }
+
             int[] arrayCodigos = codigos.Split(',').Select(x => int.Parse(x)).ToArray();
 
             var data = await (from x in _context.Coordenado.Where(x => arrayCodigos.Contains(x.CoordenadoId))
@@ -173,7 +185,13 @@ namespace Coord.Controllers
                                   x.Telefone,
                               }).ToListAsync();
 
-            return Json(data);
+            response = new
+            {
+                success = true,
+                data
+            };
+
+            return Json(response);
         }
 
         private bool CoordenadoExists(int id)

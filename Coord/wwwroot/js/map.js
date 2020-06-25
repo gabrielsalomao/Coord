@@ -135,6 +135,20 @@ function initMap() {
 
                 timedCount();
 
+
+                var iconBase = 'img/';
+                new google.maps.Marker({
+                    position: new google.maps.LatLng(-20.4934837, -54.6703361),
+                    map: map,
+                    icon: iconBase + 'lagoa.svg'
+                });
+
+                new google.maps.Marker({
+                    position: new google.maps.LatLng(-20.4517077, -54.6708995),
+                    map: map,
+                    icon: iconBase + 'segredo.svg'
+                });
+
                 function timedCount() {
                     if (count == enderecos.length)
                         stopCount();
@@ -209,17 +223,34 @@ function obterCoodenadosPorRegiao(arrayComCodigos) {
 }
 
 function montarTabelaDosCoordenados(listaCoordenados) {
-
+    listaCorpoElement.innerHTML = "";
     var bodyElement = "";
 
-    for (var i of listaCoordenados) {
-        bodyElement += ` <li class="list-group-item d-flex justify-content-between align-items-center">
+    if (!listaCoordenados.success) {
+        return "";
+    } else {
+        for (var i of listaCoordenados.data) {
+            bodyElement += ` <li class="list-group-item d-flex justify-content-between align-items-center">
             <strong>${i.nome}</strong> ${i.telefone}
-         <span class="badge badge-primary badge-pill">14</span> <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                <div >
+                  <a href="Coordenado/Edit/${i.codigo}" title="Editar" class="btn btn-info text-white" style=" cursor: pointer; ">
+                            <span class="material-icons">
+                                create
+                            </span>
+                        </a>
+                        <a  href="Coordenado/Details/${i.codigo}" title="Detalhes" class="btn btn-primary text-white" style=" cursor: pointer;">
+                            <span class="material-icons">
+                                visibility
+                            </span>
+                        </a>
+                        <a href="Coordenado/Delete/${i.codigo}" title="Deletar" class="btn btn-danger text-white" style=" cursor: pointer; ">
+                            <span class="material-icons">
+                                delete
+                            </span>
+                        </a>
                 </div>
         </li>`
+        }
     }
 
     listaCorpoElement.innerHTML = bodyElement;
