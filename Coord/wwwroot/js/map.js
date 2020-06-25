@@ -135,20 +135,6 @@ function initMap() {
 
                 timedCount();
 
-
-                var iconBase = 'img/';
-                new google.maps.Marker({
-                    position: new google.maps.LatLng(-20.4934837, -54.6703361),
-                    map: map,
-                    icon: iconBase + 'lagoa.svg'
-                });
-
-                new google.maps.Marker({
-                    position: new google.maps.LatLng(-20.4517077, -54.6708995),
-                    map: map,
-                    icon: iconBase + 'segredo.svg'
-                });
-
                 function timedCount() {
                     if (count == enderecos.length)
                         stopCount();
@@ -218,40 +204,44 @@ function initMap() {
 function obterCoodenadosPorRegiao(arrayComCodigos) {
     $.post('/Coordenado/ObterCoordenadosPorCodigo',
         data = { codigos: arrayComCodigos.join(',') }, (data) => {
+            console.log(data);
             montarTabelaDosCoordenados(data);
         });
 }
 
 function montarTabelaDosCoordenados(listaCoordenados) {
-    listaCorpoElement.innerHTML = "";
+
     var bodyElement = "";
 
     if (!listaCoordenados.success) {
-        return "";
+        listaCorpoElement.innerHTML = listaCoordenados.body;
+        return;
     } else {
-        for (var i of listaCoordenados.data) {
-            bodyElement += ` <li class="list-group-item d-flex justify-content-between align-items-center">
+        for (var i of listaCoordenados.body) {
+            bodyElement += `<li class="list-group-item d-flex justify-content-between align-items-center">
             <strong>${i.nome}</strong> ${i.telefone}
-                <div >
-                  <a href="Coordenado/Edit/${i.codigo}" title="Editar" class="btn btn-info text-white" style=" cursor: pointer; ">
-                            <span class="material-icons">
-                                create
-                            </span>
-                        </a>
-                        <a  href="Coordenado/Details/${i.codigo}" title="Detalhes" class="btn btn-primary text-white" style=" cursor: pointer;">
-                            <span class="material-icons">
-                                visibility
-                            </span>
-                        </a>
-                        <a href="Coordenado/Delete/${i.codigo}" title="Deletar" class="btn btn-danger text-white" style=" cursor: pointer; ">
-                            <span class="material-icons">
-                                delete
-                            </span>
-                        </a>
-                </div>
+                <div>
+                  <div class="btn-group  btn-group-sm" role="group" aria-label="Basic example">
+                    <a href="coordenado/edit/${i.codigo}" title="Editar" class="btn btn-info text-white" style=" cursor: pointer; ">
+                        <span class="material-icons">
+                            create
+                        </span>
+                    </a>
+                    <a href="coordenado/details/${i.codigo}" title="Detalhes" class="btn btn-primary text-white" style=" cursor: pointer;">
+                        <span class="material-icons">
+                            visibility
+                        </span>
+                    </a>
+                    <a href="coordenado/delete/${i.codigo}" title="Deletar" class="btn btn-danger text-white" style=" cursor: pointer; ">
+                        <span class="material-icons">
+                            delete
+                        </span>
+                    </a>
+                </div>           
+            </div>
         </li>`
         }
-    }
 
-    listaCorpoElement.innerHTML = bodyElement;
+        listaCorpoElement.innerHTML = bodyElement;
+    }
 };

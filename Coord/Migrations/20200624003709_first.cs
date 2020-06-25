@@ -12,10 +12,11 @@ namespace Coord.Migrations
                 columns: table => new
                 {
                     CoordenadorId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     UpdatedDate = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(type: "varchar(100)", nullable: false),
+                    ZonaEleitoral = table.Column<string>(type: "varchar(200)", nullable: true),
                     Veiculo = table.Column<bool>(nullable: false),
                     RedeSocial = table.Column<string>(type: "varchar(150)", nullable: true),
                     Placa = table.Column<string>(type: "varchar(10)", nullable: true),
@@ -32,11 +33,12 @@ namespace Coord.Migrations
                 columns: table => new
                 {
                     CoordenadoId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     UpdatedDate = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(type: "varchar(100)", nullable: false),
                     Veiculo = table.Column<bool>(nullable: false),
+                    ZonaEleitoral = table.Column<string>(type: "varchar(200)", nullable: true),
                     RedeSocial = table.Column<string>(type: "varchar(150)", nullable: true),
                     Placa = table.Column<string>(type: "varchar(10)", nullable: true),
                     Celular = table.Column<string>(type: "varchar(20)", nullable: true),

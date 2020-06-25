@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Coord.Models;
+using System;
 
 namespace Coord.Controllers
 {
@@ -163,35 +164,37 @@ namespace Coord.Controllers
         [HttpPost]
         public async Task<JsonResult> ObterCoordenadosPorCodigo(string codigos)
         {
-            object response = new object();
+            object data = null;
 
-            if (string.IsNullOrEmpty(codigos))
+            try
             {
+                if (string.IsNullOrEmpty(codigos))
+                    throw new Exception("Nenhum coordenado encontrado...");
 
+                int[] arrayCodigos = codigos.Split(',').Select(x => int.Parse(x)).ToArray();
 
-                return Json(response = new
+                data = new
                 {
-                    success = false
-                });
+                    success = true,
+                    body = await (from x in _context.Coordenado.Where(x => arrayCodigos.Contains(x.CoordenadoId))
+                                  select new
+                                  {
+                                      Codigo = x.CoordenadoId,
+                                      x.Nome,
+                                      x.Telefone,
+                                  }).ToListAsync()
+                };
+            }
+            catch (Exception e)
+            {
+                data = new
+                {
+                    success = false,
+                    body = e.Message,
+                };
             }
 
-            int[] arrayCodigos = codigos.Split(',').Select(x => int.Parse(x)).ToArray();
-
-            var data = await (from x in _context.Coordenado.Where(x => arrayCodigos.Contains(x.CoordenadoId))
-                              select new
-                              {
-                                  Codigo = x.CoordenadoId,
-                                  x.Nome,
-                                  x.Telefone,
-                              }).ToListAsync();
-
-            response = new
-            {
-                success = true,
-                data
-            };
-
-            return Json(response);
+            return Json(data);
         }
 
         private bool CoordenadoExists(int id)

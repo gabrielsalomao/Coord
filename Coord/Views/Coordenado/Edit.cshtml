@@ -57,10 +57,15 @@
                 <label class="custom-control-label" asp-for="Veiculo">Veiculo</label>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-2">
             <label asp-for="Placa" class="control-label"></label>
             <input asp-for="Placa" class="form-control placa" placeholder="ex: ABC 9999" />
             <span asp-validation-for="Placa" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control telefone" placeholder="exemplo@exemplo.com" />
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="form-group col-md-12">
             <label asp-for="RedeSocial" class="control-label"></label>
