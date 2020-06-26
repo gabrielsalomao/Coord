@@ -137,7 +137,7 @@ function initMap() {
 
                 function timedCount() {
                     if (count == enderecos.length)
-                        stopCount();
+                        return;
 
                     var item = enderecos[count];
                     geocoder.geocode({ 'address': item.endereco }, function (results, status) {
@@ -148,10 +148,12 @@ function initMap() {
                             });
 
                             //long
+                            console.log(results[0].geometry);
+
                             var longitude = results[0].geometry.viewport.Ua.j;
 
                             //lat
-                            var latitude = results[0].geometry.viewport.Ya.j;
+                            var latitude = results[0].geometry.viewport.Za.j;
 
                             var latLongObject = new google.maps.LatLng(latitude, longitude);
 
