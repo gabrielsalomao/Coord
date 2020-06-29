@@ -151,6 +151,8 @@ function initMap() {
                             });
 
                             //long
+                            console.log(results[0].geometry);
+
                             var longitude = results[0].geometry.viewport.Ua.j;
 
                             console.log(results[0].geometry.viewport);
