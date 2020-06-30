@@ -66,10 +66,34 @@
             @Html.DisplayFor(model => model.UpdatedDate)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="CoordenadorId" />
-        <input type="submit" value="Deletar" class="btn btn-danger" /> |
-        <a asp-action="Index">Voltar</a>
-    </form>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+        Deletar
+    </button>
+
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Tem certeza de que deseja excluir isso?
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form asp-action="Delete">
+                <div class="modal-body">
+                    <h6>
+                        Deletar esse coordenador deletará todos coordenados relacionados a ele
+                    </h6>
+                    <input type="hidden" asp-for="CoordenadorId" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <input type="submit" value="Deletar" class="btn btn-danger" />                </div>
+            </form>
+        </div>
+    </div>
 </div>

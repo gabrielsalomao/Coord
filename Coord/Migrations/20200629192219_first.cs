@@ -12,7 +12,7 @@ namespace Coord.Migrations
                 columns: table => new
                 {
                     CoordenadorId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     UpdatedDate = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(type: "varchar(100)", nullable: false),
@@ -21,7 +21,8 @@ namespace Coord.Migrations
                     RedeSocial = table.Column<string>(type: "varchar(150)", nullable: true),
                     Placa = table.Column<string>(type: "varchar(10)", nullable: true),
                     Celular = table.Column<string>(type: "varchar(20)", nullable: true),
-                    Telefone = table.Column<string>(type: "varchar(20)", nullable: true)
+                    Telefone = table.Column<string>(type: "varchar(20)", nullable: true),
+                    Email = table.Column<string>(type: "varchar(100)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -33,7 +34,7 @@ namespace Coord.Migrations
                 columns: table => new
                 {
                     CoordenadoId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     UpdatedDate = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(type: "varchar(100)", nullable: false),
@@ -47,7 +48,8 @@ namespace Coord.Migrations
                     Bairro = table.Column<string>(type: "varchar(50)", nullable: false),
                     Cep = table.Column<string>(type: "varchar(10)", nullable: false),
                     Numero = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
-                    CoordenadorId = table.Column<int>(nullable: false)
+                    CoordenadorId = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(type: "varchar(100)", nullable: true)
                 },
                 constraints: table =>
                 {
